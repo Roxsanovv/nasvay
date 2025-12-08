@@ -94,6 +94,110 @@
             animation: float 20s infinite linear;
         }
         
+        /* Баннер с таймером */
+        .timer-banner {
+            background: linear-gradient(90deg, #0e7490, #059669);
+            padding: 12px 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 100;
+        }
+        
+        .timer-banner.ended {
+            background: linear-gradient(90deg, #dc2626, #ea580c);
+        }
+        
+        .timer-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .timer-banner-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .timer-banner-icon {
+            font-size: 18px;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        .timer-banner-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .timer-banner-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .timer-banner-timer {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .timer-banner-unit {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 6px 10px;
+            min-width: 45px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .timer-banner-value {
+            display: block;
+            font-size: 16px;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+        }
+        
+        .timer-banner-label {
+            display: block;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+        
+        .timer-banner-separator {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            opacity: 0.7;
+        }
+        
+        .timer-banner-ended {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        .timer-banner-ended-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         /* Анимации */
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
@@ -140,6 +244,11 @@
             to { transform: rotate(360deg); }
         }
         
+        @keyframes countdown {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
         /* Контейнер */
         .container {
             max-width: 1200px;
@@ -151,7 +260,7 @@
         
         /* Шапка */
         header {
-            padding: 80px 0 60px;
+            padding: 60px 0 40px;
             position: relative;
             overflow: hidden;
             background: linear-gradient(180deg, rgba(10, 15, 26, 0.9) 0%, transparent 100%);
@@ -229,7 +338,7 @@
             font-size: 20px;
             color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto 60px;
+            margin: 0 auto 40px;
             line-height: 1.8;
             font-weight: 300;
             opacity: 0.9;
@@ -1262,8 +1371,44 @@
                 padding: 0 var(--mobile-spacing);
             }
             
+            .timer-banner-content {
+                padding: 0 var(--mobile-spacing);
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .timer-banner-left {
+                justify-content: center;
+            }
+            
+            .timer-banner-right {
+                justify-content: center;
+            }
+            
+            .timer-banner-timer {
+                gap: 5px;
+            }
+            
+            .timer-banner-unit {
+                min-width: 40px;
+                padding: 5px 8px;
+            }
+            
+            .timer-banner-value {
+                font-size: 14px;
+            }
+            
+            .timer-banner-label {
+                font-size: 8px;
+            }
+            
+            .timer-banner-separator {
+                font-size: 12px;
+            }
+            
             header {
-                padding: 50px 0 40px;
+                padding: 40px 0 30px;
             }
             
             .logo-text {
@@ -1395,6 +1540,27 @@
         }
         
         @media (max-width: 480px) {
+            .timer-banner {
+                padding: 10px 0;
+            }
+            
+            .timer-banner-text {
+                font-size: 12px;
+            }
+            
+            .timer-banner-unit {
+                min-width: 35px;
+                padding: 4px 6px;
+            }
+            
+            .timer-banner-value {
+                font-size: 13px;
+            }
+            
+            .timer-banner-label {
+                font-size: 7px;
+            }
+            
             .logo-text {
                 font-size: 36px;
             }
@@ -1435,6 +1601,10 @@
             .modal {
                 max-height: 85vh;
                 max-width: 600px;
+            }
+            
+            .timer-banner-content {
+                flex-direction: row;
             }
             
             .categories-grid {
@@ -1485,6 +1655,49 @@
     <!-- Анимированный фон -->
     <div class="animated-bg" id="animated-bg"></div>
 
+    <!-- Баннер с таймером -->
+    <div class="timer-banner" id="timer-banner">
+        <div class="timer-banner-content">
+            <div class="timer-banner-left">
+                <div class="timer-banner-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="timer-banner-text" id="timer-banner-text">
+                    До конца голосования осталось:
+                </div>
+            </div>
+            <div class="timer-banner-right">
+                <div class="timer-banner-timer" id="timer-banner-timer">
+                    <div class="timer-banner-unit">
+                        <span class="timer-banner-value" id="banner-days">00</span>
+                        <span class="timer-banner-label">дн</span>
+                    </div>
+                    <div class="timer-banner-separator">:</div>
+                    <div class="timer-banner-unit">
+                        <span class="timer-banner-value" id="banner-hours">00</span>
+                        <span class="timer-banner-label">час</span>
+                    </div>
+                    <div class="timer-banner-separator">:</div>
+                    <div class="timer-banner-unit">
+                        <span class="timer-banner-value" id="banner-minutes">00</span>
+                        <span class="timer-banner-label">мин</span>
+                    </div>
+                    <div class="timer-banner-separator">:</div>
+                    <div class="timer-banner-unit">
+                        <span class="timer-banner-value" id="banner-seconds">00</span>
+                        <span class="timer-banner-label">сек</span>
+                    </div>
+                </div>
+                <div class="timer-banner-ended" id="timer-banner-ended" style="display: none;">
+                    <div class="timer-banner-icon">
+                        <i class="fas fa-flag-checkered"></i>
+                    </div>
+                    <div class="timer-banner-ended-text">ПОДВЕДЕНИЕ ИТОГОВ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Кнопка админ-панели -->
     <button class="admin-panel-btn" id="admin-toggle">
         <i class="fas fa-cog"></i>
@@ -1505,6 +1718,7 @@
                     <div class="logo-subtitle">Премия года</div>
                 </div>
                 <p class="tagline">Выбирайте лучших в уникальных номинациях. Голосуйте за тех, кто действительно заслуживает признания в нашем сообществе.</p>
+                
                 <div class="stats">
                     <div class="stat-card">
                         <div class="stat-icon">
@@ -1517,7 +1731,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        <div class="stat-value" id="candidates-count">13</div>
+                        <div class="stat-value" id="candidates-count">0</div>
                         <div class="stat-label">главных кандидатов</div>
                     </div>
                 </div>
@@ -1616,8 +1830,11 @@
                 </button>
             </div>
             <ul class="rules-list">
+                <li>Создавайте любые номинации через админ-панель</li>
+                <li>Добавляйте кандидатов в каждую номинацию</li>
                 <li>Голосуйте только за одного кандидата в номинации</li>
                 <li>Меняйте свой выбор в любой момент</li>
+                <li>Результаты видны всем в реальном времени</li>
                 <li>Все голосования полностью анонимны</li>
                 <li>Администратор может управлять номинациями</li>
             </ul>
@@ -1816,6 +2033,10 @@
         // Пароль администратора
         const ADMIN_PASSWORD = "nasvay2024";
 
+        // Дата окончания голосования (31 декабря 2025, 22:00)
+        const VOTING_END_DATE = new Date('December 31, 2025 22:00:00').getTime();
+        let votingEnded = false;
+
         // Уникальные номинации для NASVAY AWARDS
         const defaultNominations = [
             {
@@ -1931,6 +2152,84 @@
             }
         }
 
+        // Функция обновления таймера в баннере
+        function updateBannerTimer() {
+            const now = new Date().getTime();
+            const distance = VOTING_END_DATE - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            const timerBanner = document.getElementById('timer-banner');
+            const timerDisplay = document.getElementById('timer-banner-timer');
+            const timerEnded = document.getElementById('timer-banner-ended');
+            const bannerText = document.getElementById('timer-banner-text');
+            
+            if (distance < 0) {
+                // Голосование завершено
+                votingEnded = true;
+                
+                timerBanner.classList.add('ended');
+                timerDisplay.style.display = 'none';
+                timerEnded.style.display = 'flex';
+                bannerText.textContent = 'Голосование завершено';
+                
+                // Отключаем кнопки голосования
+                document.querySelectorAll('.vote-btn').forEach(btn => {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-ban"></i> Голосование завершено';
+                    btn.style.background = 'var(--text-muted)';
+                });
+                
+                document.querySelectorAll('.category-select-btn').forEach(btn => {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-ban"></i> Завершено';
+                });
+                
+                return;
+            }
+            
+            // Обновляем значения таймера
+            document.getElementById('banner-days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('banner-hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('banner-minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('banner-seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            // Изменяем цвет при приближении к концу
+            if (days === 0) {
+                timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #ea580c)';
+                
+                if (hours < 12) {
+                    timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #991b1b)';
+                }
+                
+                if (hours < 6) {
+                    timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #7f1d1d)';
+                }
+                
+                if (hours < 1) {
+                    // Мигание при последнем часе
+                    if (Math.floor(Date.now() / 500) % 2 === 0) {
+                        timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #450a0a)';
+                    } else {
+                        timerBanner.style.background = 'linear-gradient(90deg, #991b1b, #7f1d1d)';
+                    }
+                }
+            }
+            
+            // Анимация при обновлении секунд
+            if (seconds % 10 === 0) {
+                document.querySelectorAll('.timer-banner-unit').forEach(unit => {
+                    unit.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        unit.style.transform = 'scale(1)';
+                    }, 300);
+                });
+            }
+        }
+
         // Инициализация приложения
         document.addEventListener('DOMContentLoaded', function() {
             createAnimatedBackground();
@@ -1944,6 +2243,10 @@
             setupEventListeners();
             loadDataFromFirebase();
             optimizeForMobile();
+            
+            // Запуск таймера
+            updateBannerTimer();
+            setInterval(updateBannerTimer, 1000);
         });
 
         // Оптимизация для мобильных
@@ -2137,14 +2440,16 @@
                             <i class="fas fa-users"></i>
                             <span>${nomination.candidates.length} кандидатов</span>
                         </div>
-                        <button class="category-select-btn">
+                        <button class="category-select-btn" ${votingEnded ? 'disabled' : ''}>
                             <i class="fas fa-vote-yea"></i>
-                            Голосовать
+                            ${votingEnded ? 'Завершено' : 'Голосовать'}
                         </button>
                     </div>
                 `;
                 
                 card.addEventListener('click', () => {
+                    if (votingEnded) return;
+                    
                     showNomination(nomination.id);
                     
                     document.querySelectorAll('.category-card').forEach(c => {
@@ -2181,9 +2486,9 @@
                         <div class="candidate-card" data-candidate-id="${candidate.id}">
                             <h3 class="candidate-name">${candidate.name}</h3>
                             <p class="candidate-description">${candidate.description}</p>
-                            <button class="vote-btn" data-nomination="${nomination.id}" data-candidate="${candidate.id}">
+                            <button class="vote-btn" data-nomination="${nomination.id}" data-candidate="${candidate.id}" ${votingEnded ? 'disabled' : ''}>
                                 <i class="fas fa-vote-yea"></i>
-                                Проголосовать
+                                ${votingEnded ? 'Голосование завершено' : 'Проголосовать'}
                             </button>
                         </div>
                     `).join('');
@@ -2250,10 +2555,12 @@
                 card.classList.remove('selected');
             });
             
-            nominationSection.querySelectorAll('.vote-btn').forEach(btn => {
-                btn.disabled = false;
-                btn.innerHTML = '<i class="fas fa-vote-yea"></i> Проголосовать';
-            });
+            if (!votingEnded) {
+                nominationSection.querySelectorAll('.vote-btn').forEach(btn => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-vote-yea"></i> Проголосовать';
+                });
+            }
             
             if (userVoteForNomination) {
                 const selectedCard = nominationSection.querySelector(`.candidate-card[data-candidate-id="${userVoteForNomination}"]`);
@@ -2287,7 +2594,6 @@
             });
             
             document.getElementById('categories-count').textContent = nominations.length;
-          
         }
 
         // Заполнение выпадающих списков в админ-панели
@@ -2323,6 +2629,8 @@
         function setupEventListeners() {
             // Голосование
             document.addEventListener('click', function(e) {
+                if (votingEnded) return;
+                
                 if (e.target.classList.contains('vote-btn') || e.target.closest('.vote-btn')) {
                     const voteBtn = e.target.classList.contains('vote-btn') ? e.target : e.target.closest('.vote-btn');
                     const nominationId = voteBtn.dataset.nomination;
@@ -2339,7 +2647,7 @@
                         const candidateId = card.dataset.candidateId;
                         const voteBtn = card.querySelector('.vote-btn');
                         
-                        if (voteBtn && !voteBtn.disabled) {
+                        if (voteBtn && !voteBtn.disabled && !votingEnded) {
                             voteForCandidate(nominationId, candidateId);
                         }
                     }
@@ -2666,6 +2974,11 @@
 
         // Голосование за кандидата
         function voteForCandidate(nominationId, candidateId) {
+            if (votingEnded) {
+                showToast('Голосование завершено!', 'error');
+                return;
+            }
+            
             userVotes[nominationId] = candidateId;
             localStorage.setItem('nasvayAwardsVotes', JSON.stringify(userVotes));
             
@@ -2741,4 +3054,4 @@
         }
     </script>
 </body>
-  </html>
+</html>
