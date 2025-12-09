@@ -1649,6 +1649,108 @@
             background: rgba(16, 185, 129, 0.3);
             color: white;
         }
+
+
+        * {
+        -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            text-rendering: optimizeSpeed;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Отключаем сложные анимации на мобильных */
+        @media (max-width: 768px) {
+            .particle,
+            .logo-icon-ring,
+            .section-badge,
+            .category-card.premium::after,
+            .candidate-card.selected::after {
+                display: none !important;
+            }
+
+            .logo-icon,
+            .category-icon,
+            .candidate-name::before {
+                animation: none !important;
+            }
+
+            .category-card:hover,
+            .candidate-card:hover,
+            .vote-btn:hover,
+            .admin-panel-btn:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+
+            .timer-banner-unit,
+            .stat-card,
+            .category-card,
+            .candidate-card {
+                transform: translateZ(0);
+                will-change: transform;
+                backface-visibility: hidden;
+            }
+
+            /* Упрощаем тени на мобильных */
+            .stat-card:hover,
+            .category-card:hover,
+            .candidate-card:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+            }
+
+            /* Уменьшаем blur эффекты на слабых устройствах */
+            .stat-card,
+            .category-card,
+            .nomination-section,
+            .modal,
+            .timer-banner-unit {
+                backdrop-filter: none !important;
+            }
+        }
+
+        /* Оптимизация для слабых Android */
+        @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Исправление для iOS */
+        @supports (-webkit-touch-callout: none) {
+            .category-card,
+            .candidate-card,
+            .modal {
+                -webkit-backdrop-filter: none;
+            }
+
+            input,
+            textarea,
+            select {
+                font-size: 16px !important; /* Предотвращает авто-зум iOS */
+            }
+        }
+
+        /* Предотвращение лага при скролле */
+        .categories-grid,
+        .candidates-grid {
+            will-change: transform;
+            transform: translateZ(0);
+        }
     </style>
 </head>
 <body>
@@ -2227,6 +2329,31 @@
                         unit.style.transform = 'scale(1)';
                     }, 300);
                 });
+            }
+        }
+
+
+        // Дебаунс для частых обновлений
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+    
+        // Оптимизированная функция для мобильных
+        function mobileOptimizedUpdateUI() {
+            if (window.innerWidth <= 768) {
+                // Упрощенный рендеринг для мобильных
+                const fragment = document.createDocumentFragment();
+                // ... оптимизированная логика ...
+            } else {
+                updateUI();
             }
         }
 
