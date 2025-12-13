@@ -1187,6 +1187,260 @@
             color: var(--text-primary);
         }
         
+        /* ============================
+           СПОНСОРСКАЯ СЕКЦИЯ В ФУТЕРЕ
+           ============================ */
+
+        .sponsor-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(16, 185, 129, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sponsor-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        .sponsor-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .sponsor-logo {
+            margin: 20px 0;
+        }
+
+        .sponsor-img {
+            max-width: 200px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(16, 185, 129, 0.3));
+            transition: all var(--animation-speed) ease;
+        }
+
+        .sponsor-img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 15px 30px rgba(16, 185, 129, 0.5));
+        }
+
+        .sponsor-slogan {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        
+        /* ============================
+           ВСПЛЫВАЮЩАЯ РЕКЛАМА ПРИ ГОЛОСОВАНИИ
+           ============================ */
+        
+        .sponsor-popup {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(5, 8, 15, 0.95));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 0;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                0 0 50px rgba(245, 158, 11, 0.4);
+            z-index: 1002;
+            width: 320px;
+            opacity: 0;
+            transform: translateX(400px);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            overflow: hidden;
+            display: none;
+        }
+        
+        .sponsor-popup.active {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .sponsor-popup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(245, 158, 11, 0.1) 0%, 
+                rgba(239, 68, 68, 0.1) 50%,
+                rgba(16, 185, 129, 0.1) 100%);
+            z-index: -1;
+        }
+        
+        .sponsor-popup-content {
+            position: relative;
+            padding: 25px;
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--animation-speed) ease;
+            font-size: 14px;
+            z-index: 10;
+        }
+        
+        .close-popup:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+        
+        .sponsor-popup-header {
+            margin-bottom: 20px;
+        }
+        
+        .sponsor-popup-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+        
+        .sponsor-popup-logo {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .sponsor-popup-logo img {
+            max-width: 180px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(245, 158, 11, 0.5));
+            animation: float 3s infinite ease-in-out;
+        }
+        
+        .sponsor-popup-body {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .sponsor-popup-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .sponsor-popup-title i {
+            color: #f59e0b;
+        }
+        
+        .sponsor-popup-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .sponsor-popup-slogan {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        
+        .sponsor-popup-btn {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--animation-speed) ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sponsor-popup-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .sponsor-popup-btn:hover::before {
+            left: 100%;
+        }
+        
+        .sponsor-popup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
+        }
+
         /* Подвал */
         footer {
             background: rgba(5, 8, 15, 0.9);
@@ -1790,6 +2044,48 @@
             .award-specs {
                 grid-template-columns: 1fr;
             }
+
+            /* Спонсорская секция для мобильных */
+            .sponsor-section {
+                padding: 20px;
+                margin-bottom: 40px;
+            }
+            
+            .sponsor-label {
+                padding: 8px 20px;
+                font-size: 11px;
+            }
+            
+            .sponsor-img {
+                max-width: 160px;
+            }
+            
+            .sponsor-slogan {
+                font-size: 12px;
+            }
+            
+            /* Всплывающая реклама для мобильных */
+            .sponsor-popup {
+                width: calc(100% - 32px);
+                right: 16px;
+                bottom: 80px;
+            }
+            
+            .sponsor-popup-content {
+                padding: 20px;
+            }
+            
+            .sponsor-popup-logo img {
+                max-width: 150px;
+            }
+            
+            .sponsor-popup-title {
+                font-size: 18px;
+            }
+            
+            .sponsor-popup-text {
+                font-size: 13px;
+            }
             
             .admin-panel-btn {
                 bottom: 20px;
@@ -1880,6 +2176,24 @@
             
             .candidate-card {
                 padding: 20px;
+            }
+            
+            .sponsor-img {
+                max-width: 140px;
+            }
+            
+            .sponsor-popup {
+                width: calc(100% - 24px);
+                right: 12px;
+                bottom: 70px;
+            }
+            
+            .sponsor-popup-content {
+                padding: 15px;
+            }
+            
+            .sponsor-popup-logo img {
+                max-width: 120px;
             }
             
             .admin-panel-btn {
@@ -2293,6 +2607,18 @@
     <footer>
         <div class="container">
             <div class="footer-content">
+                <!-- Секция спонсора -->
+                <div class="sponsor-section">
+                    <div class="sponsor-label">
+                        <i class="fas fa-star"></i>
+                        Официальный энергетический партнер
+                    </div>
+                    <div class="sponsor-logo">
+                        <img src="toranado.svg" alt="TORNADO ENERGY" class="sponsor-img">
+                    </div>
+                    <p class="sponsor-slogan">Энергия для ваших побед</p>
+                </div>
+                
                 <a href="#" class="rules-link" id="rules-link">
                     <i class="fas fa-book"></i>
                     Правила голосования
@@ -2304,6 +2630,43 @@
             </div>
         </div>
     </footer>
+
+    <!-- Всплывающая реклама при голосовании -->
+    <div class="sponsor-popup" id="sponsor-popup">
+        <div class="sponsor-popup-content">
+            <button class="close-popup" id="close-sponsor-popup">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="sponsor-popup-header">
+                <div class="sponsor-popup-badge">
+                    <i class="fas fa-bolt"></i>
+                    Партнер голосования
+                </div>
+            </div>
+            
+            <div class="sponsor-popup-logo">
+                <img src="energy.png" 
+                     alt="TORNADO ENERGY" 
+                     id="sponsor-popup-logo" width="50">
+            </div>
+            
+            <div class="sponsor-popup-body">
+                <h3 class="sponsor-popup-title">
+                    <i class="fas fa-star"></i>
+                    Голосуйте с энергией!
+                </h3>
+                <p class="sponsor-popup-text">
+                    Ваш голос принят! TORNADO ENERGY — официальный энергетический партнер NASVAY AWARDS.
+                </p>
+                
+                <div class="sponsor-popup-slogan">
+                    <i class="fas fa-charging-station"></i>
+                    Энергия для ваших побед
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Модальное окно правил -->
     <div class="modal-overlay" id="rules-modal">
@@ -2499,1122 +2862,1148 @@
         <span id="toast-message">Успешно!</span>
     </div>
 
-        <script>
-            // Конфигурация Firebase
-            const firebaseConfig = {
-                apiKey: "AIzaSyAI-Wan70AF6stAPqWyz5VgBQPg-3cq5xc",
-                authDomain: "voice-c7126.firebaseapp.com",
-                databaseURL: "https://voice-c7126-default-rtdb.europe-west1.firebasedatabase.app",
-                projectId: "voice-c7126",
-                storageBucket: "voice-c7126.firebasestorage.app",
-                messagingSenderId: "81611420588",
-                appId: "1:81611420588:web:4f5359524a0118a23dc009"
-            };
+    <script>
+        // Конфигурация Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAI-Wan70AF6stAPqWyz5VgBQPg-3cq5xc",
+            authDomain: "voice-c7126.firebaseapp.com",
+            databaseURL: "https://voice-c7126-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "voice-c7126",
+            storageBucket: "voice-c7126.firebasestorage.app",
+            messagingSenderId: "81611420588",
+            appId: "1:81611420588:web:4f5359524a0118a23dc009"
+        };
+    
+        // Инициализация Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        const auth = firebase.auth();
+    
+        // Пароль администратора
+        const ADMIN_PASSWORD = "nasvay2024";
+    
+        // Дата окончания голосования (31 декабря 2025, 22:00)
+        const VOTING_END_DATE = new Date('December 31, 2025 22:00:00').getTime();
+        let votingEnded = false;
+    
+        // Уникальные номинации для NASVAY AWARDS
+        const defaultNominations = [
+            {
+                id: "king-of-nasvay",
+                title: "КОРОЛЬ NASVAY",
+                description: "Главный лидер года. Тот, кто задаёт тренды, вдохновляет команду и принимает ключевые решения. Настоящий лидер сообщества.",
+                icon: "fas fa-crown",
+                category: "premium",
+                candidates: []
+            },
+            {
+                id: "legend-of-year",
+                title: "ЛЕГЕНДА ГОДА",
+                description: "Икона стиля и самый влиятельный человек года. Чьё мнение ценится выше всего, а поступки становятся легендами.",
+                icon: "fas fa-star",
+                category: "premium",
+                candidates: []
+            },
+            {
+                id: "vibe-master",
+                title: "МАСТЕР ВАЙБОВ",
+                description: "Тот, кто создаёт неповторимую атмосферу. Где он — там всегда хорошее настроение, классная музыка и правильные разговоры.",
+                icon: "fas fa-music",
+                category: "basic",
+                candidates: []
+            },
+            {
+                id: "meme-emperor",
+                title: "ИМПЕРАТОР МЕМОВ",
+                description: "Главный по мемам и виральному контенту. Чьи шутки расходятся на цитаты, а находчивость не знает границ.",
+                icon: "fas fa-laugh",
+                category: "basic",
+                candidates: []
+            },
+            {
+                id: "hustler-prime",
+                title: "ГЛАВНЫЙ ХАСТЛЕР",
+                description: "Самый целеустремлённый и продуктивный. Кто успевает везде и всегда, достигая целей с невероятной скоростью.",
+                icon: "fas fa-bolt",
+                category: "basic",
+                candidates: []
+            },
+            {
+                id: "support-king",
+                title: "КОРОЛЬ ПОДДЕРЖКИ",
+                description: "Тот, кто всегда готов помочь и поддержать. На кого можно положиться в трудную минуту и в радостные моменты.",
+                icon: "fas fa-handshake",
+                category: "basic",
+                candidates: []
+            },
+            {
+                id: "chill-master",
+                title: "МАСТЕР ЧИЛЛА",
+                description: "Гуру релакса и спокойствия. Кто умеет расслабляться так, что заряжает своей энергией отдыха всех вокруг.",
+                icon: "fas fa-couch",
+                category: "basic",
+                candidates: []
+            },
+            {
+                id: "trend-setter",
+                title: "СЕТТЕР ТРЕНДОВ",
+                description: "Законодатель мод и трендов в сообществе. Чей стиль, привычки и идеи подхватывают все остальные.",
+                icon: "fas fa-fire",
+                category: "basic",
+                candidates: []
+            },
+            {
+                id: "energy-source",
+                title: "ИСТОЧНИК ЭНЕРГИИ",
+                description: "Человек-батарейка, чей позитив и энергия заряжают всех вокруг. С ним невозможно устать или заскучать.",
+                icon: "fas fa-battery-full",
+                category: "basic",
+                candidates: []
+            },
+            {
+                id: "wisdom-keeper",
+                title: "ХРАНИТЕЛЬ МУДРОСТИ",
+                description: "Самый мудрый и рассудительный. Чьи советы всегда вовремя и по делу, а жизненный опыт бесценен.",
+                icon: "fas fa-brain",
+                category: "basic",
+                candidates: []
+            }
+        ];
         
-            // Инициализация Firebase
-            firebase.initializeApp(firebaseConfig);
-            const database = firebase.database();
-            const auth = firebase.auth();
+        // Переменные приложения
+        let nominations = [];
+        let userVotes = {};
+        let activeCategory = null;
+        let isInitialized = false;
+        let isAdmin = false;
+        let voteCount = 0; // Счетчик голосов для показа рекламы
         
-            // Пароль администратора
-            const ADMIN_PASSWORD = "nasvay2024";
-        
-            // Дата окончания голосования (31 декабря 2025, 22:00)
-            const VOTING_END_DATE = new Date('December 31, 2025 22:00:00').getTime();
-            let votingEnded = false;
-        
-            // Уникальные номинации для NASVAY AWARDS
-            const defaultNominations = [
-                {
-                    id: "king-of-nasvay",
-                    title: "КОРОЛЬ NASVAY",
-                    description: "Главный лидер года. Тот, кто задаёт тренды, вдохновляет команду и принимает ключевые решения. Настоящий лидер сообщества.",
-                    icon: "fas fa-crown",
-                    category: "premium",
-                    candidates: []
-                },
-                {
-                    id: "legend-of-year",
-                    title: "ЛЕГЕНДА ГОДА",
-                    description: "Икона стиля и самый влиятельный человек года. Чьё мнение ценится выше всего, а поступки становятся легендами.",
-                    icon: "fas fa-star",
-                    category: "premium",
-                    candidates: []
-                },
-                {
-                    id: "vibe-master",
-                    title: "МАСТЕР ВАЙБОВ",
-                    description: "Тот, кто создаёт неповторимую атмосферу. Где он — там всегда хорошее настроение, классная музыка и правильные разговоры.",
-                    icon: "fas fa-music",
-                    category: "basic",
-                    candidates: []
-                },
-                {
-                    id: "meme-emperor",
-                    title: "ИМПЕРАТОР МЕМОВ",
-                    description: "Главный по мемам и виральному контенту. Чьи шутки расходятся на цитаты, а находчивость не знает границ.",
-                    icon: "fas fa-laugh",
-                    category: "basic",
-                    candidates: []
-                },
-                {
-                    id: "hustler-prime",
-                    title: "ГЛАВНЫЙ ХАСТЛЕР",
-                    description: "Самый целеустремлённый и продуктивный. Кто успевает везде и всегда, достигая целей с невероятной скоростью.",
-                    icon: "fas fa-bolt",
-                    category: "basic",
-                    candidates: []
-                },
-                {
-                    id: "support-king",
-                    title: "КОРОЛЬ ПОДДЕРЖКИ",
-                    description: "Тот, кто всегда готов помочь и поддержать. На кого можно положиться в трудную минуту и в радостные моменты.",
-                    icon: "fas fa-handshake",
-                    category: "basic",
-                    candidates: []
-                },
-                {
-                    id: "chill-master",
-                    title: "МАСТЕР ЧИЛЛА",
-                    description: "Гуру релакса и спокойствия. Кто умеет расслабляться так, что заряжает своей энергией отдыха всех вокруг.",
-                    icon: "fas fa-couch",
-                    category: "basic",
-                    candidates: []
-                },
-                {
-                    id: "trend-setter",
-                    title: "СЕТТЕР ТРЕНДОВ",
-                    description: "Законодатель мод и трендов в сообществе. Чей стиль, привычки и идеи подхватывают все остальные.",
-                    icon: "fas fa-fire",
-                    category: "basic",
-                    candidates: []
-                },
-                {
-                    id: "energy-source",
-                    title: "ИСТОЧНИК ЭНЕРГИИ",
-                    description: "Человек-батарейка, чей позитив и энергия заряжают всех вокруг. С ним невозможно устать или заскучать.",
-                    icon: "fas fa-battery-full",
-                    category: "basic",
-                    candidates: []
-                },
-                {
-                    id: "wisdom-keeper",
-                    title: "ХРАНИТЕЛЬ МУДРОСТИ",
-                    description: "Самый мудрый и рассудительный. Чьи советы всегда вовремя и по делу, а жизненный опыт бесценен.",
-                    icon: "fas fa-brain",
-                    category: "basic",
-                    candidates: []
-                }
-            ];
+        // Создание анимированного фона
+        function createAnimatedBackground() {
+            const bg = document.getElementById('animated-bg');
+            const colors = ['#10b981', '#34d399', '#06b6d4', '#8b5cf6'];
             
-            // Переменные приложения
-            let nominations = [];
-            let userVotes = {};
-            let activeCategory = null;
-            let isInitialized = false;
-            let isAdmin = false;
-            
-            // Создание анимированного фона
-            function createAnimatedBackground() {
-                const bg = document.getElementById('animated-bg');
-                const colors = ['#10b981', '#34d399', '#06b6d4', '#8b5cf6'];
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
                 
-                for (let i = 0; i < 20; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    
-                    const size = Math.random() * 100 + 50;
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    particle.style.background = `radial-gradient(circle, ${color}40 0%, transparent 70%)`;
-                    particle.style.left = `${Math.random() * 100}%`;
-                    particle.style.top = `${Math.random() * 100}%`;
-                    particle.style.animationDelay = `${Math.random() * 5}s`;
-                    particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                    
-                    bg.appendChild(particle);
+                const size = Math.random() * 100 + 50;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = `radial-gradient(circle, ${color}40 0%, transparent 70%)`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                
+                bg.appendChild(particle);
+            }
+        }
+    
+        // Функция обновления таймера в баннере
+        function updateBannerTimer() {
+            const now = new Date().getTime();
+            const distance = VOTING_END_DATE - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            const timerBanner = document.getElementById('timer-banner');
+            const timerDisplay = document.getElementById('timer-banner-timer');
+            const timerEnded = document.getElementById('timer-banner-ended');
+            const bannerText = document.getElementById('timer-banner-text');
+            
+            if (distance < 0) {
+                // Голосование завершено
+                votingEnded = true;
+                
+                timerBanner.classList.add('ended');
+                timerDisplay.style.display = 'none';
+                timerEnded.style.display = 'flex';
+                bannerText.textContent = 'Голосование завершено';
+                
+                // Отключаем кнопки голосования
+                document.querySelectorAll('.vote-btn').forEach(btn => {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-ban"></i> Голосование завершено';
+                    btn.style.background = 'var(--text-muted)';
+                });
+                
+                document.querySelectorAll('.category-select-btn').forEach(btn => {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-ban"></i> Завершено';
+                });
+                
+                return;
+            }
+            
+            // Обновляем значения таймера
+            document.getElementById('banner-days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('banner-hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('banner-minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('banner-seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            // Изменяем цвет при приближении к концу
+            if (days === 0) {
+                timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #ea580c)';
+                
+                if (hours < 12) {
+                    timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #991b1b)';
+                }
+                
+                if (hours < 6) {
+                    timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #7f1d1d)';
+                }
+                
+                if (hours < 1) {
+                    // Мигание при последнем часе
+                    if (Math.floor(Date.now() / 500) % 2 === 0) {
+                        timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #450a0a)';
+                    } else {
+                        timerBanner.style.background = 'linear-gradient(90deg, #991b1b, #7f1d1d)';
+                    }
                 }
             }
-        
-            // Функция обновления таймера в баннере
-            function updateBannerTimer() {
-                const now = new Date().getTime();
-                const distance = VOTING_END_DATE - now;
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                const timerBanner = document.getElementById('timer-banner');
-                const timerDisplay = document.getElementById('timer-banner-timer');
-                const timerEnded = document.getElementById('timer-banner-ended');
-                const bannerText = document.getElementById('timer-banner-text');
-                
-                if (distance < 0) {
-                    // Голосование завершено
-                    votingEnded = true;
-                    
-                    timerBanner.classList.add('ended');
-                    timerDisplay.style.display = 'none';
-                    timerEnded.style.display = 'flex';
-                    bannerText.textContent = 'Голосование завершено';
-                    
-                    // Отключаем кнопки голосования
-                    document.querySelectorAll('.vote-btn').forEach(btn => {
-                        btn.disabled = true;
-                        btn.innerHTML = '<i class="fas fa-ban"></i> Голосование завершено';
-                        btn.style.background = 'var(--text-muted)';
+            
+            // Анимация при обновлении секунд
+            if (seconds % 10 === 0) {
+                document.querySelectorAll('.timer-banner-unit').forEach(unit => {
+                    unit.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        unit.style.transform = 'scale(1)';
+                    }, 300);
+                });
+            }
+        }
+    
+        // Инициализация приложения
+        document.addEventListener('DOMContentLoaded', function() {
+            createAnimatedBackground();
+            
+            const savedVotes = localStorage.getItem('nasvayAwardsVotes');
+            if (savedVotes) {
+                userVotes = JSON.parse(savedVotes);
+            }
+            
+            checkAdminAuth();
+            setupEventListeners();
+            loadDataFromFirebase();
+            setupTabs();
+            optimizeForMobile();
+            
+            // Запуск таймера
+            updateBannerTimer();
+            setInterval(updateBannerTimer, 1000);
+        });
+    
+        // Оптимизация для мобильных
+        function optimizeForMobile() {
+            function setVH() {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+            
+            setVH();
+            window.addEventListener('resize', setVH);
+            window.addEventListener('orientationchange', setVH);
+        }
+    
+                // Настройка вкладок
+                function setupTabs() {
+                    const tabBtns = document.querySelectorAll('.tab-btn');
+                    const tabContents = document.querySelectorAll('.tab-content');
+
+                    tabBtns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const tabId = btn.dataset.tab;
+
+                            // Обновляем активные вкладки
+                            tabBtns.forEach(b => b.classList.remove('active'));
+                            tabContents.forEach(c => c.classList.remove('active'));
+
+                            btn.classList.add('active');
+                            document.getElementById(`${tabId}-tab`).classList.add('active');
+
+                            // Сохраняем выбранную вкладку
+                            localStorage.setItem('selectedTab', tabId);
+
+                            // Скрываем/показываем шапку в зависимости от вкладки
+                            toggleHeaderVisibility(tabId);
+                        });
                     });
-                    
-                    document.querySelectorAll('.category-select-btn').forEach(btn => {
-                        btn.disabled = true;
-                        btn.innerHTML = '<i class="fas fa-ban"></i> Завершено';
-                    });
-                    
-                    return;
+
+                    // Восстанавливаем выбранную вкладку
+                    const savedTab = localStorage.getItem('selectedTab') || 'voting';
+                    const tabToActivate = document.querySelector(`.tab-btn[data-tab="${savedTab}"]`);
+                    if (tabToActivate) {
+                        tabToActivate.click();
+                    } else {
+                        // По умолчанию показываем голосование
+                        toggleHeaderVisibility('voting');
+                    }
                 }
-                
-                // Обновляем значения таймера
-                document.getElementById('banner-days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('banner-hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('banner-minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('banner-seconds').textContent = seconds.toString().padStart(2, '0');
-                
-                // Изменяем цвет при приближении к концу
-                if (days === 0) {
-                    timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #ea580c)';
-                    
-                    if (hours < 12) {
-                        timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #991b1b)';
-                    }
-                    
-                    if (hours < 6) {
-                        timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #7f1d1d)';
-                    }
-                    
-                    if (hours < 1) {
-                        // Мигание при последнем часе
-                        if (Math.floor(Date.now() / 500) % 2 === 0) {
-                            timerBanner.style.background = 'linear-gradient(90deg, #dc2626, #450a0a)';
-                        } else {
-                            timerBanner.style.background = 'linear-gradient(90deg, #991b1b, #7f1d1d)';
+
+                // Переключение видимости шапки
+                function toggleHeaderVisibility(activeTab) {
+                    const header = document.querySelector('header');
+                    const statsSection = document.querySelector('.stats-section');
+
+                    if (activeTab === 'award') {
+                        // На вкладке награды скрываем статистику
+                        if (statsSection) {
+                            statsSection.style.display = 'none';
+                        }
+                        // Можно также скрыть tagline если нужно
+                        const tagline = document.querySelector('.tagline');
+                        if (tagline) {
+                            tagline.style.display = 'none';
+                        }
+                    } else {
+                        // На вкладке голосования показываем всё
+                        if (statsSection) {
+                            statsSection.style.display = 'block';
+                        }
+                        const tagline = document.querySelector('.tagline');
+                        if (tagline) {
+                            tagline.style.display = 'block';
                         }
                     }
                 }
-                
-                // Анимация при обновлении секунд
-                if (seconds % 10 === 0) {
-                    document.querySelectorAll('.timer-banner-unit').forEach(unit => {
-                        unit.style.transform = 'scale(1.05)';
-                        setTimeout(() => {
-                            unit.style.transform = 'scale(1)';
-                        }, 300);
-                    });
-                }
+    
+        // Проверка авторизации администратора
+        function checkAdminAuth() {
+            const adminToken = localStorage.getItem('adminToken');
+            if (adminToken === ADMIN_PASSWORD) {
+                isAdmin = true;
+                updateAdminButton();
             }
-        
-            // Инициализация приложения
-            document.addEventListener('DOMContentLoaded', function() {
-                createAnimatedBackground();
+        }
+    
+        // Обновление кнопки админ-панели
+        function updateAdminButton() {
+            const adminBtn = document.getElementById('admin-toggle');
+            if (isAdmin) {
+                adminBtn.innerHTML = '<i class="fas fa-cog"></i>';
+                adminBtn.style.background = 'var(--gradient-primary)';
+            } else {
+                adminBtn.innerHTML = '<i class="fas fa-lock"></i>';
+                adminBtn.style.background = 'var(--gradient-primary)';
+            }
+        }
+    
+        // Загрузка данных из Firebase
+        function loadDataFromFirebase() {
+            const nominationsRef = database.ref('nominations');
+            
+            nominationsRef.on('value', (snapshot) => {
+                const data = snapshot.val();
                 
-                const savedVotes = localStorage.getItem('nasvayAwardsVotes');
-                if (savedVotes) {
-                    userVotes = JSON.parse(savedVotes);
+                if (data) {
+                    nominations = Object.keys(data).map(key => {
+                        return {
+                            id: key,
+                            title: data[key].title,
+                            description: data[key].description || "",
+                            icon: data[key].icon || "fas fa-award",
+                            category: data[key].category || "basic",
+                            candidates: data[key].candidates || []
+                        };
+                    });
+                    
+                    updateUI();
+                } else {
+                    if (!isInitialized && isAdmin) {
+                        createDefaultNominations();
+                        isInitialized = true;
+                    } else {
+                        nominations = [];
+                        showEmptyState();
+                    }
                 }
                 
-                checkAdminAuth();
-                setupEventListeners();
-                loadDataFromFirebase();
-                setupTabs();
-                optimizeForMobile();
-                
-                // Запуск таймера
-                updateBannerTimer();
-                setInterval(updateBannerTimer, 1000);
+                loadUserVotesState();
             });
-        
-            // Оптимизация для мобильных
-            function optimizeForMobile() {
-                function setVH() {
-                    const vh = window.innerHeight * 0.01;
-                    document.documentElement.style.setProperty('--vh', `${vh}px`);
-                }
-                
-                setVH();
-                window.addEventListener('resize', setVH);
-                window.addEventListener('orientationchange', setVH);
-            }
-        
-                    // Настройка вкладок
-                    function setupTabs() {
-                        const tabBtns = document.querySelectorAll('.tab-btn');
-                        const tabContents = document.querySelectorAll('.tab-content');
-
-                        tabBtns.forEach(btn => {
-                            btn.addEventListener('click', () => {
-                                const tabId = btn.dataset.tab;
-
-                                // Обновляем активные вкладки
-                                tabBtns.forEach(b => b.classList.remove('active'));
-                                tabContents.forEach(c => c.classList.remove('active'));
-
-                                btn.classList.add('active');
-                                document.getElementById(`${tabId}-tab`).classList.add('active');
-
-                                // Сохраняем выбранную вкладку
-                                localStorage.setItem('selectedTab', tabId);
-
-                                // Скрываем/показываем шапку в зависимости от вкладки
-                                toggleHeaderVisibility(tabId);
-                            });
-                        });
-
-                        // Восстанавливаем выбранную вкладку
-                        const savedTab = localStorage.getItem('selectedTab') || 'voting';
-                        const tabToActivate = document.querySelector(`.tab-btn[data-tab="${savedTab}"]`);
-                        if (tabToActivate) {
-                            tabToActivate.click();
-                        } else {
-                            // По умолчанию показываем голосование
-                            toggleHeaderVisibility('voting');
-                        }
-                    }
-
-                    // Переключение видимости шапки
-                    function toggleHeaderVisibility(activeTab) {
-                        const header = document.querySelector('header');
-                        const statsSection = document.querySelector('.stats-section');
-
-                        if (activeTab === 'award') {
-                            // На вкладке награды скрываем статистику
-                            if (statsSection) {
-                                statsSection.style.display = 'none';
-                            }
-                            // Можно также скрыть tagline если нужно
-                            const tagline = document.querySelector('.tagline');
-                            if (tagline) {
-                                tagline.style.display = 'none';
-                            }
-                        } else {
-                            // На вкладке голосования показываем всё
-                            if (statsSection) {
-                                statsSection.style.display = 'block';
-                            }
-                            const tagline = document.querySelector('.tagline');
-                            if (tagline) {
-                                tagline.style.display = 'block';
-                            }
-                        }
-                    }
-        
-            // Проверка авторизации администратора
-            function checkAdminAuth() {
-                const adminToken = localStorage.getItem('adminToken');
-                if (adminToken === ADMIN_PASSWORD) {
-                    isAdmin = true;
-                    updateAdminButton();
-                }
-            }
-        
-            // Обновление кнопки админ-панели
-            function updateAdminButton() {
-                const adminBtn = document.getElementById('admin-toggle');
-                if (isAdmin) {
-                    adminBtn.innerHTML = '<i class="fas fa-cog"></i>';
-                    adminBtn.style.background = 'var(--gradient-primary)';
-                } else {
-                    adminBtn.innerHTML = '<i class="fas fa-lock"></i>';
-                    adminBtn.style.background = 'var(--gradient-primary)';
-                }
-            }
-        
-            // Загрузка данных из Firebase
-            function loadDataFromFirebase() {
-                const nominationsRef = database.ref('nominations');
-                
-                nominationsRef.on('value', (snapshot) => {
-                    const data = snapshot.val();
-                    
-                    if (data) {
-                        nominations = Object.keys(data).map(key => {
-                            return {
-                                id: key,
-                                title: data[key].title,
-                                description: data[key].description || "",
-                                icon: data[key].icon || "fas fa-award",
-                                category: data[key].category || "basic",
-                                candidates: data[key].candidates || []
-                            };
-                        });
-                        
-                        updateUI();
-                    } else {
-                        if (!isInitialized && isAdmin) {
-                            createDefaultNominations();
-                            isInitialized = true;
-                        } else {
-                            nominations = [];
-                            showEmptyState();
-                        }
-                    }
-                    
-                    loadUserVotesState();
+        }
+    
+        // Создание дефолтных номинаций
+        function createDefaultNominations() {
+            const nominationsRef = database.ref('nominations');
+            
+            defaultNominations.forEach(nomination => {
+                nominationsRef.child(nomination.id).set({
+                    title: nomination.title,
+                    description: nomination.description,
+                    icon: nomination.icon,
+                    category: nomination.category || "basic",
+                    candidates: nomination.candidates || []
                 });
-            }
-        
-            // Создание дефолтных номинаций
-            function createDefaultNominations() {
-                const nominationsRef = database.ref('nominations');
+            });
+            
+            showToast('Созданы стандартные номинации NASVAY AWARDS!', 'success');
+        }
+    
+        // Загрузка состояния голосов пользователя
+        function loadUserVotesState() {
+            const votesRef = database.ref('votes');
+            
+            votesRef.on('value', (snapshot) => {
+                const data = snapshot.val() || {};
                 
-                defaultNominations.forEach(nomination => {
-                    nominationsRef.child(nomination.id).set({
-                        title: nomination.title,
-                        description: nomination.description,
-                        icon: nomination.icon,
-                        category: nomination.category || "basic",
-                        candidates: nomination.candidates || []
-                    });
-                });
-                
-                showToast('Созданы стандартные номинации NASVAY AWARDS!', 'success');
-            }
-        
-            // Загрузка состояния голосов пользователя
-            function loadUserVotesState() {
-                const votesRef = database.ref('votes');
-                
-                votesRef.on('value', (snapshot) => {
-                    const data = snapshot.val() || {};
-                    
-                    // Обновляем статистику
-                    updateStatistics();
-                    
-                    // Обновляем UI для активной номинации
-                    if (activeCategory) {
-                        updateVoteButtonsState(activeCategory);
-                    }
-                    
-                    // Для отладки: выводим текущие голоса в консоль
-                    console.log('Текущие голоса из Firebase:', data);
-                });
-            }
-        
-            // Обновление UI
-            function updateUI() {
-                if (nominations.length === 0) {
-                    showEmptyState();
-                    return;
-                }
-                
-                document.getElementById('empty-state').style.display = 'none';
-                
-                const mainNominations = nominations.filter(n => n.category === "premium");
-                const additionalNominations = nominations.filter(n => n.category === "basic");
-                
-                if (mainNominations.length > 0) {
-                    document.getElementById('main-nominations-section').style.display = 'block';
-                    createCategoriesGrid('main-categories-grid', mainNominations, 'premium');
-                } else {
-                    document.getElementById('main-nominations-section').style.display = 'none';
-                }
-                
-                if (additionalNominations.length > 0) {
-                    document.getElementById('additional-nominations-section').style.display = 'block';
-                    createCategoriesGrid('additional-categories-grid', additionalNominations, 'basic');
-                } else {
-                    document.getElementById('additional-nominations-section').style.display = 'none';
-                }
-                
-                createNominationsSections();
-                
-                if (isAdmin) {
-                    populateAdminSelects();
-                }
-                
-                if (!activeCategory && nominations.length > 0) {
-                    activeCategory = nominations[0].id;
-                    showNomination(activeCategory);
-                }
-                
+                // Обновляем статистику
                 updateStatistics();
+                
+                // Обновляем UI для активной номинации
+                if (activeCategory) {
+                    updateVoteButtonsState(activeCategory);
+                }
+                
+                // Для отладки: выводим текущие голоса в консоль
+                console.log('Текущие голоса из Firebase:', data);
+            });
+        }
+    
+        // Обновление UI
+        function updateUI() {
+            if (nominations.length === 0) {
+                showEmptyState();
+                return;
             }
-        
-            // Показать пустое состояние
-            function showEmptyState() {
-                document.getElementById('empty-state').style.display = 'block';
+            
+            document.getElementById('empty-state').style.display = 'none';
+            
+            const mainNominations = nominations.filter(n => n.category === "premium");
+            const additionalNominations = nominations.filter(n => n.category === "basic");
+            
+            if (mainNominations.length > 0) {
+                document.getElementById('main-nominations-section').style.display = 'block';
+                createCategoriesGrid('main-categories-grid', mainNominations, 'premium');
+            } else {
                 document.getElementById('main-nominations-section').style.display = 'none';
+            }
+            
+            if (additionalNominations.length > 0) {
+                document.getElementById('additional-nominations-section').style.display = 'block';
+                createCategoriesGrid('additional-categories-grid', additionalNominations, 'basic');
+            } else {
                 document.getElementById('additional-nominations-section').style.display = 'none';
-                document.getElementById('nominations-container').innerHTML = '';
-                updateStatistics();
             }
-        
-            // Создание сетки категорий
-            function createCategoriesGrid(gridId, nominationsList, categoryType) {
-                const grid = document.getElementById(gridId);
-                grid.innerHTML = '';
-                
-                if (nominationsList.length === 0) {
-                    grid.innerHTML = `
-                        <div style="text-align: center; padding: 40px; grid-column: 1 / -1;">
-                            <div style="font-size: 48px; color: var(--text-secondary); margin-bottom: 20px;">
-                                <i class="fas fa-inbox"></i>
-                            </div>
-                            <h3 style="color: var(--text-secondary); margin-bottom: 15px;">
-                                ${categoryType === 'premium' ? 'Нет главных номинаций' : 'Нет специальных номинаций'}
-                            </h3>
-                            <p style="color: var(--text-muted);">
-                                ${isAdmin ? 'Создайте номинации через админ-панель' : 'Администратор ещё не создал номинации'}
-                            </p>
+            
+            createNominationsSections();
+            
+            if (isAdmin) {
+                populateAdminSelects();
+            }
+            
+            if (!activeCategory && nominations.length > 0) {
+                activeCategory = nominations[0].id;
+                showNomination(activeCategory);
+            }
+            
+            updateStatistics();
+        }
+    
+        // Показать пустое состояние
+        function showEmptyState() {
+            document.getElementById('empty-state').style.display = 'block';
+            document.getElementById('main-nominations-section').style.display = 'none';
+            document.getElementById('additional-nominations-section').style.display = 'none';
+            document.getElementById('nominations-container').innerHTML = '';
+            updateStatistics();
+        }
+    
+        // Создание сетки категорий
+        function createCategoriesGrid(gridId, nominationsList, categoryType) {
+            const grid = document.getElementById(gridId);
+            grid.innerHTML = '';
+            
+            if (nominationsList.length === 0) {
+                grid.innerHTML = `
+                    <div style="text-align: center; padding: 40px; grid-column: 1 / -1;">
+                        <div style="font-size: 48px; color: var(--text-secondary); margin-bottom: 20px;">
+                            <i class="fas fa-inbox"></i>
                         </div>
-                    `;
-                    return;
-                }
+                        <h3 style="color: var(--text-secondary); margin-bottom: 15px;">
+                            ${categoryType === 'premium' ? 'Нет главных номинаций' : 'Нет специальных номинаций'}
+                        </h3>
+                        <p style="color: var(--text-muted);">
+                            ${isAdmin ? 'Создайте номинации через админ-панель' : 'Администратор ещё не создал номинации'}
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+            
+            nominationsList.forEach(nomination => {
+                const card = document.createElement('div');
+                card.className = `category-card ${nomination.category} ${nomination.id === activeCategory ? 'active' : ''}`;
+                card.dataset.categoryId = nomination.id;
                 
-                nominationsList.forEach(nomination => {
-                    const card = document.createElement('div');
-                    card.className = `category-card ${nomination.category} ${nomination.id === activeCategory ? 'active' : ''}`;
-                    card.dataset.categoryId = nomination.id;
-                    
-                    card.innerHTML = `
-                        <span class="category-badge">
-                            <i class="${categoryType === 'premium' ? 'fas fa-gem' : 'fas fa-fire'}"></i>
-                            ${categoryType === 'premium' ? 'Главная' : 'Специальная'}
-                        </span>
-                        <div class="category-icon">
-                            <i class="${nomination.icon}"></i>
+                card.innerHTML = `
+                    <span class="category-badge">
+                        <i class="${categoryType === 'premium' ? 'fas fa-gem' : 'fas fa-fire'}"></i>
+                        ${categoryType === 'premium' ? 'Главная' : 'Специальная'}
+                    </span>
+                    <div class="category-icon">
+                        <i class="${nomination.icon}"></i>
+                    </div>
+                    <div class="category-header">
+                        <h3 class="category-title">${nomination.title}</h3>
+                    </div>
+                    <p class="category-description">${nomination.description}</p>
+                    <div class="category-footer">
+                        <div class="category-candidates">
+                            <i class="fas fa-users"></i>
+                            <span>${nomination.candidates.length} кандидатов</span>
                         </div>
-                        <div class="category-header">
-                            <h3 class="category-title">${nomination.title}</h3>
-                        </div>
-                        <p class="category-description">${nomination.description}</p>
-                        <div class="category-footer">
-                            <div class="category-candidates">
-                                <i class="fas fa-users"></i>
-                                <span>${nomination.candidates.length} кандидатов</span>
-                            </div>
-                            <button class="category-select-btn" ${votingEnded ? 'disabled' : ''}>
-                                <i class="fas fa-vote-yea"></i>
-                                ${votingEnded ? 'Завершено' : 'Голосовать'}
-                            </button>
-                        </div>
-                    `;
-                    
-                    card.addEventListener('click', () => {
-                        if (votingEnded) return;
-                        
-                        showNomination(nomination.id);
-                        
-                        document.querySelectorAll('.category-card').forEach(c => {
-                            c.classList.remove('active');
-                        });
-                        card.classList.add('active');
-                        
-                        const section = document.getElementById(`nomination-${nomination.id}`);
-                        if (section) {
-                            section.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    });
-                    
-                    grid.appendChild(card);
-                });
-            }
-        
-            // Создание секций номинаций
-            function createNominationsSections() {
-                const container = document.getElementById('nominations-container');
-                container.innerHTML = '';
+                        <button class="category-select-btn" ${votingEnded ? 'disabled' : ''}>
+                            <i class="fas fa-vote-yea"></i>
+                            ${votingEnded ? 'Завершено' : 'Голосовать'}
+                        </button>
+                    </div>
+                `;
                 
-                nominations.forEach(nomination => {
-                    const section = document.createElement('div');
-                    section.className = `nomination-section ${nomination.id === activeCategory ? 'active' : ''}`;
-                    section.id = `nomination-${nomination.id}`;
-                    
-                    let candidatesHTML = '';
-                    if (nomination.candidates && nomination.candidates.length > 0) {
-                        candidatesHTML = nomination.candidates.map(candidate => `
-                            <div class="candidate-card" data-candidate-id="${candidate.id}">
-                                <h3 class="candidate-name">${candidate.name}</h3>
-                                <p class="candidate-description">${candidate.description}</p>
-                                <button class="vote-btn" data-nomination="${nomination.id}" data-candidate="${candidate.id}" ${votingEnded ? 'disabled' : ''}>
-                                    <i class="fas fa-vote-yea"></i>
-                                    ${votingEnded ? 'Голосование завершено' : 'Проголосовать'}
-                                </button>
-                            </div>
-                        `).join('');
-                    } else {
-                        candidatesHTML = `
-                            <div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">
-                                <div style="font-size: 60px; color: var(--text-secondary); margin-bottom: 20px;">
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                                <h3 style="color: var(--text-secondary); margin-bottom: 15px;">Нет кандидатов</h3>
-                                <p style="color: var(--text-muted);">Добавьте кандидатов через админ-панель</p>
-                            </div>
-                        `;
-                    }
-                    
-                    const badgeClass = nomination.category === 'premium' ? '' : 'basic';
-                    const badgeText = nomination.category === 'premium' ? 'Главная номинация' : 'Специальная номинация';
-                    const badgeIcon = nomination.category === 'premium' ? 'fas fa-gem' : 'fas fa-fire';
-                    
-                    section.innerHTML = `
-                        <div class="nomination-header">
-                            <div class="nomination-title-wrapper">
-                                <h2 class="nomination-title">${nomination.title}</h2>
-                                <span class="nomination-badge ${badgeClass}">
-                                    <i class="${badgeIcon}"></i>
-                                    ${badgeText}
-                                </span>
-                            </div>
-                            <p class="nomination-description">${nomination.description}</p>
-                        </div>
-                        <div class="candidates-grid" id="candidates-${nomination.id}">
-                            ${candidatesHTML}
-                        </div>
-                    `;
-                    
-                    container.appendChild(section);
-                });
-            }
-        
-            // Показать номинацию
-            function showNomination(nominationId) {
-                activeCategory = nominationId;
-                
-                document.querySelectorAll('.nomination-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                const targetSection = document.getElementById(`nomination-${nominationId}`);
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                }
-                
-                updateVoteButtonsState(nominationId);
-            }
-        
-            // Обновление состояния кнопок голосования
-            function updateVoteButtonsState(nominationId) {
-                const userVoteForNomination = userVotes[nominationId];
-                const nominationSection = document.getElementById(`nomination-${nominationId}`);
-                
-                if (!nominationSection) return;
-                
-                nominationSection.querySelectorAll('.candidate-card').forEach(card => {
-                    card.classList.remove('selected');
-                });
-                
-                if (!votingEnded) {
-                    nominationSection.querySelectorAll('.vote-btn').forEach(btn => {
-                        btn.disabled = false;
-                        btn.innerHTML = '<i class="fas fa-vote-yea"></i> Проголосовать';
-                    });
-                }
-                
-                if (userVoteForNomination) {
-                    const selectedCard = nominationSection.querySelector(`.candidate-card[data-candidate-id="${userVoteForNomination}"]`);
-                    if (selectedCard) {
-                        selectedCard.classList.add('selected');
-                        
-                        const selectedBtn = selectedCard.querySelector('.vote-btn');
-                        if (selectedBtn) {
-                            selectedBtn.disabled = true;
-                            selectedBtn.innerHTML = '<i class="fas fa-check"></i> Выбран';
-                        }
-                    }
-                }
-            }
-        
-            // Обновление статистики
-            function updateStatistics() {
-                let totalCandidates = 0;
-                let mainNominations = 0;
-                let additionalNominations = 0;
-                
-                nominations.forEach(nomination => {
-                    if (nomination.candidates) {
-                        totalCandidates += nomination.candidates.length;
-                    }
-                    if (nomination.category === 'premium') {
-                        mainNominations++;
-                    } else {
-                        additionalNominations++;
-                    }
-                });
-                
-                document.getElementById('categories-count').textContent = nominations.length;
-            }
-        
-            // Заполнение выпадающих списков в админ-панели
-            function populateAdminSelects() {
-                const addSelect = document.getElementById('admin-category');
-                const deleteSelect = document.getElementById('delete-category-select');
-                
-                addSelect.innerHTML = '';
-                deleteSelect.innerHTML = '<option value="">-- Выберите номинацию для удаления --</option>';
-                
-                if (nominations.length === 0) {
-                    addSelect.innerHTML = '<option value="">-- Сначала создайте номинацию --</option>';
-                    deleteSelect.innerHTML = '<option value="">-- Нет номинаций для удаления --</option>';
-                    return;
-                }
-                
-                addSelect.innerHTML = '<option value="">-- Выберите номинацию --</option>';
-                
-                nominations.forEach(nomination => {
-                    const option1 = document.createElement('option');
-                    option1.value = nomination.id;
-                    option1.textContent = `${nomination.title} (${nomination.category === 'premium' ? 'Главная' : 'Специальная'})`;
-                    addSelect.appendChild(option1);
-                    
-                    const option2 = document.createElement('option');
-                    option2.value = nomination.id;
-                    option2.textContent = `${nomination.title} (${nomination.category === 'premium' ? 'Главная' : 'Специальная'}, ${nomination.candidates.length} кандидатов)`;
-                    deleteSelect.appendChild(option2);
-                });
-            }
-        
-            // Настройка обработчиков событий
-            function setupEventListeners() {
-                // Голосование
-                document.addEventListener('click', function(e) {
+                card.addEventListener('click', () => {
                     if (votingEnded) return;
                     
-                    if (e.target.classList.contains('vote-btn') || e.target.closest('.vote-btn')) {
-                        const voteBtn = e.target.classList.contains('vote-btn') ? e.target : e.target.closest('.vote-btn');
-                        const nominationId = voteBtn.dataset.nomination;
-                        const candidateId = voteBtn.dataset.candidate;
-                        
-                        voteForCandidate(nominationId, candidateId);
-                    }
+                    showNomination(nomination.id);
                     
-                    if (e.target.closest('.candidate-card')) {
-                        const card = e.target.closest('.candidate-card');
-                        const nominationSection = card.closest('.nomination-section');
-                        if (nominationSection) {
-                            const nominationId = nominationSection.id.replace('nomination-', '');
-                            const candidateId = card.dataset.candidateId;
-                            const voteBtn = card.querySelector('.vote-btn');
-                            
-                            if (voteBtn && !voteBtn.disabled && !votingEnded) {
-                                voteForCandidate(nominationId, candidateId);
-                            }
-                        }
+                    document.querySelectorAll('.category-card').forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    card.classList.add('active');
+                    
+                    const section = document.getElementById(`nomination-${nomination.id}`);
+                    if (section) {
+                        section.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
                 });
                 
-                // Правила голосования
-                document.getElementById('rules-link').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.getElementById('rules-modal').classList.add('active');
-                });
+                grid.appendChild(card);
+            });
+        }
+    
+        // Создание секций номинаций
+        function createNominationsSections() {
+            const container = document.getElementById('nominations-container');
+            container.innerHTML = '';
+            
+            nominations.forEach(nomination => {
+                const section = document.createElement('div');
+                section.className = `nomination-section ${nomination.id === activeCategory ? 'active' : ''}`;
+                section.id = `nomination-${nomination.id}`;
                 
-                document.getElementById('close-rules-modal').addEventListener('click', function() {
-                    document.getElementById('rules-modal').classList.remove('active');
-                });
-                
-                document.getElementById('rules-modal').addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                    }
-                });
-                
-                // Админ-панель
-                document.getElementById('admin-toggle').addEventListener('click', function() {
-                    if (isAdmin) {
-                        document.getElementById('admin-panel-modal').style.display = 'flex';
-                        populateAdminSelects();
-                    } else {
-                        document.getElementById('admin-login-modal').classList.add('active');
-                    }
-                });
-                
-                document.getElementById('close-admin-login-modal').addEventListener('click', function() {
-                    document.getElementById('admin-login-modal').classList.remove('active');
-                });
-                
-                document.getElementById('admin-login-modal').addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                    }
-                });
-                
-                // Вход в админ-панель
-                document.getElementById('login-admin-btn').addEventListener('click', adminLogin);
-                
-                document.getElementById('admin-password').addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        adminLogin();
-                    }
-                });
-                
-                // Закрытие админ-панели
-                document.getElementById('close-admin-panel-modal').addEventListener('click', function() {
-                    document.getElementById('admin-panel-modal').style.display = 'none';
-                });
-                
-                document.getElementById('admin-panel-modal').addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.style.display = 'none';
-                    }
-                });
-                
-                // Выход из админ-панели
-                document.getElementById('logout-admin-btn').addEventListener('click', adminLogout);
-                
-                // Создание номинации
-                document.getElementById('add-category-btn').addEventListener('click', function() {
-                    if (!isAdmin) {
-                        showToast('Требуется авторизация администратора!', 'error');
-                        return;
-                    }
-                    createNomination();
-                });
-                
-                // Удаление номинации
-                document.getElementById('delete-category-btn').addEventListener('click', function() {
-                    if (!isAdmin) {
-                        showToast('Требуется авторизация администратора!', 'error');
-                        return;
-                    }
-                    deleteNomination();
-                });
-                
-                // Добавление кандидата
-                document.getElementById('add-candidate-btn').addEventListener('click', function() {
-                    if (!isAdmin) {
-                        showToast('Требуется авторизация администратора!', 'error');
-                        return;
-                    }
-                    addCandidate();
-                });
-                
-                // Сброс голосов
-                document.getElementById('reset-votes-btn').addEventListener('click', function() {
-                    if (!isAdmin) {
-                        showToast('Требуется авторизация администратора!', 'error');
-                        return;
-                    }
-                    resetAllVotes();
-                });
-                
-                // Закрытие модальных окон по ESC
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape') {
-                        document.getElementById('rules-modal').classList.remove('active');
-                        document.getElementById('admin-login-modal').classList.remove('active');
-                        document.getElementById('admin-panel-modal').style.display = 'none';
-                    }
-                });
-            }
-        
-            // Вход администратора
-            function adminLogin() {
-                const passwordInput = document.getElementById('admin-password');
-                const password = passwordInput.value.trim();
-                
-                if (!password) {
-                    showToast('Введите пароль!', 'error');
-                    return;
+                let candidatesHTML = '';
+                if (nomination.candidates && nomination.candidates.length > 0) {
+                    candidatesHTML = nomination.candidates.map(candidate => `
+                        <div class="candidate-card" data-candidate-id="${candidate.id}">
+                            <h3 class="candidate-name">${candidate.name}</h3>
+                            <p class="candidate-description">${candidate.description}</p>
+                            <button class="vote-btn" data-nomination="${nomination.id}" data-candidate="${candidate.id}" ${votingEnded ? 'disabled' : ''}>
+                                <i class="fas fa-vote-yea"></i>
+                                ${votingEnded ? 'Голосование завершено' : 'Проголосовать'}
+                            </button>
+                        </div>
+                    `).join('');
+                } else {
+                    candidatesHTML = `
+                        <div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">
+                            <div style="font-size: 60px; color: var(--text-secondary); margin-bottom: 20px;">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3 style="color: var(--text-secondary); margin-bottom: 15px;">Нет кандидатов</h3>
+                            <p style="color: var(--text-muted);">Добавьте кандидатов через админ-панель</p>
+                        </div>
+                    `;
                 }
                 
-                if (password === ADMIN_PASSWORD) {
-                    isAdmin = true;
-                    localStorage.setItem('adminToken', ADMIN_PASSWORD);
-                    updateAdminButton();
+                const badgeClass = nomination.category === 'premium' ? '' : 'basic';
+                const badgeText = nomination.category === 'premium' ? 'Главная номинация' : 'Специальная номинация';
+                const badgeIcon = nomination.category === 'premium' ? 'fas fa-gem' : 'fas fa-fire';
+                
+                section.innerHTML = `
+                    <div class="nomination-header">
+                        <div class="nomination-title-wrapper">
+                            <h2 class="nomination-title">${nomination.title}</h2>
+                            <span class="nomination-badge ${badgeClass}">
+                                <i class="${badgeIcon}"></i>
+                                ${badgeText}
+                            </span>
+                        </div>
+                        <p class="nomination-description">${nomination.description}</p>
+                    </div>
+                    <div class="candidates-grid" id="candidates-${nomination.id}">
+                        ${candidatesHTML}
+                    </div>
+                `;
+                
+                container.appendChild(section);
+            });
+        }
+    
+        // Показать номинацию
+        function showNomination(nominationId) {
+            activeCategory = nominationId;
+            
+            document.querySelectorAll('.nomination-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const targetSection = document.getElementById(`nomination-${nominationId}`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            updateVoteButtonsState(nominationId);
+        }
+    
+        // Обновление состояния кнопок голосования
+        function updateVoteButtonsState(nominationId) {
+            const userVoteForNomination = userVotes[nominationId];
+            const nominationSection = document.getElementById(`nomination-${nominationId}`);
+            
+            if (!nominationSection) return;
+            
+            nominationSection.querySelectorAll('.candidate-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            if (!votingEnded) {
+                nominationSection.querySelectorAll('.vote-btn').forEach(btn => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-vote-yea"></i> Проголосовать';
+                });
+            }
+            
+            if (userVoteForNomination) {
+                const selectedCard = nominationSection.querySelector(`.candidate-card[data-candidate-id="${userVoteForNomination}"]`);
+                if (selectedCard) {
+                    selectedCard.classList.add('selected');
                     
-                    showToast('Добро пожаловать в NASVAY AWARDS!', 'success');
+                    const selectedBtn = selectedCard.querySelector('.vote-btn');
+                    if (selectedBtn) {
+                        selectedBtn.disabled = true;
+                        selectedBtn.innerHTML = '<i class="fas fa-check"></i> Выбран';
+                    }
+                }
+            }
+        }
+    
+        // Обновление статистики
+        function updateStatistics() {
+            let totalCandidates = 0;
+            let mainNominations = 0;
+            let additionalNominations = 0;
+            
+            nominations.forEach(nomination => {
+                if (nomination.candidates) {
+                    totalCandidates += nomination.candidates.length;
+                }
+                if (nomination.category === 'premium') {
+                    mainNominations++;
+                } else {
+                    additionalNominations++;
+                }
+            });
+            
+            document.getElementById('categories-count').textContent = nominations.length;
+        }
+    
+        // Заполнение выпадающих списков в админ-панели
+        function populateAdminSelects() {
+            const addSelect = document.getElementById('admin-category');
+            const deleteSelect = document.getElementById('delete-category-select');
+            
+            addSelect.innerHTML = '';
+            deleteSelect.innerHTML = '<option value="">-- Выберите номинацию для удаления --</option>';
+            
+            if (nominations.length === 0) {
+                addSelect.innerHTML = '<option value="">-- Сначала создайте номинацию --</option>';
+                deleteSelect.innerHTML = '<option value="">-- Нет номинаций для удаления --</option>';
+                return;
+            }
+            
+            addSelect.innerHTML = '<option value="">-- Выберите номинацию --</option>';
+            
+            nominations.forEach(nomination => {
+                const option1 = document.createElement('option');
+                option1.value = nomination.id;
+                option1.textContent = `${nomination.title} (${nomination.category === 'premium' ? 'Главная' : 'Специальная'})`;
+                addSelect.appendChild(option1);
+                
+                const option2 = document.createElement('option');
+                option2.value = nomination.id;
+                option2.textContent = `${nomination.title} (${nomination.category === 'premium' ? 'Главная' : 'Специальная'}, ${nomination.candidates.length} кандидатов)`;
+                deleteSelect.appendChild(option2);
+            });
+        }
+    
+        // Настройка обработчиков событий
+        function setupEventListeners() {
+            // Голосование
+            document.addEventListener('click', function(e) {
+                if (votingEnded) return;
+                
+                if (e.target.classList.contains('vote-btn') || e.target.closest('.vote-btn')) {
+                    const voteBtn = e.target.classList.contains('vote-btn') ? e.target : e.target.closest('.vote-btn');
+                    const nominationId = voteBtn.dataset.nomination;
+                    const candidateId = voteBtn.dataset.candidate;
                     
-                    document.getElementById('admin-login-modal').classList.remove('active');
-                    passwordInput.value = '';
-                    
+                    voteForCandidate(nominationId, candidateId);
+                }
+                
+                if (e.target.closest('.candidate-card')) {
+                    const card = e.target.closest('.candidate-card');
+                    const nominationSection = card.closest('.nomination-section');
+                    if (nominationSection) {
+                        const nominationId = nominationSection.id.replace('nomination-', '');
+                        const candidateId = card.dataset.candidateId;
+                        const voteBtn = card.querySelector('.vote-btn');
+                        
+                        if (voteBtn && !voteBtn.disabled && !votingEnded) {
+                            voteForCandidate(nominationId, candidateId);
+                        }
+                    }
+                }
+            });
+            
+            // Правила голосования
+            document.getElementById('rules-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('rules-modal').classList.add('active');
+            });
+            
+            document.getElementById('close-rules-modal').addEventListener('click', function() {
+                document.getElementById('rules-modal').classList.remove('active');
+            });
+            
+            document.getElementById('rules-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+            
+            // Админ-панель
+            document.getElementById('admin-toggle').addEventListener('click', function() {
+                if (isAdmin) {
                     document.getElementById('admin-panel-modal').style.display = 'flex';
                     populateAdminSelects();
                 } else {
-                    showToast('Неверный пароль!', 'error');
-                    passwordInput.value = '';
-                    passwordInput.focus();
+                    document.getElementById('admin-login-modal').classList.add('active');
                 }
+            });
+            
+            document.getElementById('close-admin-login-modal').addEventListener('click', function() {
+                document.getElementById('admin-login-modal').classList.remove('active');
+            });
+            
+            document.getElementById('admin-login-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+            
+            // Вход в админ-панель
+            document.getElementById('login-admin-btn').addEventListener('click', adminLogin);
+            
+            document.getElementById('admin-password').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    adminLogin();
+                }
+            });
+            
+            // Закрытие админ-панели
+            document.getElementById('close-admin-panel-modal').addEventListener('click', function() {
+                document.getElementById('admin-panel-modal').style.display = 'none';
+            });
+            
+            document.getElementById('admin-panel-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+            
+            // Выход из админ-панели
+            document.getElementById('logout-admin-btn').addEventListener('click', adminLogout);
+            
+            // Создание номинации
+            document.getElementById('add-category-btn').addEventListener('click', function() {
+                if (!isAdmin) {
+                    showToast('Требуется авторизация администратора!', 'error');
+                    return;
+                }
+                createNomination();
+            });
+            
+            // Удаление номинации
+            document.getElementById('delete-category-btn').addEventListener('click', function() {
+                if (!isAdmin) {
+                    showToast('Требуется авторизация администратора!', 'error');
+                    return;
+                }
+                deleteNomination();
+            });
+            
+            // Добавление кандидата
+            document.getElementById('add-candidate-btn').addEventListener('click', function() {
+                if (!isAdmin) {
+                    showToast('Требуется авторизация администратора!', 'error');
+                    return;
+                }
+                addCandidate();
+            });
+            
+            // Сброс голосов
+            document.getElementById('reset-votes-btn').addEventListener('click', function() {
+                if (!isAdmin) {
+                    showToast('Требуется авторизация администратора!', 'error');
+                    return;
+                }
+                resetAllVotes();
+            });
+            
+            // Всплывающая реклама
+            document.getElementById('close-sponsor-popup').addEventListener('click', function() {
+                document.getElementById('sponsor-popup').classList.remove('active');
+            });
+            
+            // Закрытие модальных окон по ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.getElementById('rules-modal').classList.remove('active');
+                    document.getElementById('admin-login-modal').classList.remove('active');
+                    document.getElementById('admin-panel-modal').style.display = 'none';
+                    document.getElementById('sponsor-popup').classList.remove('active');
+                }
+            });
+        }
+    
+        // Вход администратора
+        function adminLogin() {
+            const passwordInput = document.getElementById('admin-password');
+            const password = passwordInput.value.trim();
+            
+            if (!password) {
+                showToast('Введите пароль!', 'error');
+                return;
             }
-        
-            // Выход администратора
-            function adminLogout() {
-                isAdmin = false;
-                localStorage.removeItem('adminToken');
+            
+            if (password === ADMIN_PASSWORD) {
+                isAdmin = true;
+                localStorage.setItem('adminToken', ADMIN_PASSWORD);
                 updateAdminButton();
                 
-                document.getElementById('admin-panel-modal').style.display = 'none';
-                showToast('Вы вышли из админ-панели', 'success');
+                showToast('Добро пожаловать в NASVAY AWARDS!', 'success');
+                
+                document.getElementById('admin-login-modal').classList.remove('active');
+                passwordInput.value = '';
+                
+                document.getElementById('admin-panel-modal').style.display = 'flex';
+                populateAdminSelects();
+            } else {
+                showToast('Неверный пароль!', 'error');
+                passwordInput.value = '';
+                passwordInput.focus();
             }
-        
-            // Создание номинации
-            function createNomination() {
-                const nameInput = document.getElementById('admin-category-name');
-                const descriptionInput = document.getElementById('admin-category-description');
-                const typeSelect = document.getElementById('admin-category-type');
-                
-                const name = nameInput.value.trim();
-                const description = descriptionInput.value.trim();
-                const categoryType = typeSelect.value;
-                
-                if (!name) {
-                    showToast('Введите название номинации!', 'error');
-                    return;
-                }
-                
-                const id = name.toLowerCase()
-                    .replace(/[^a-zа-яё0-9]/g, '-')
-                    .replace(/-+/g, '-')
-                    .replace(/^-|-$/g, '');
-                
-                if (nominations.find(n => n.id === id)) {
-                    showToast('Номинация с таким названием уже существует!', 'error');
-                    return;
-                }
-                
-                const newNomination = {
-                    id: id,
-                    title: name,
-                    description: description,
-                    icon: "fas fa-award",
-                    category: categoryType,
-                    candidates: []
-                };
-                
-                const nominationRef = database.ref(`nominations/${id}`);
-                nominationRef.set({
-                    title: name,
-                    description: description,
-                    icon: "fas fa-award",
-                    category: categoryType,
-                    candidates: []
-                }).then(() => {
-                    showToast(`Номинация "${name}" создана!`, 'success');
-                    
-                    nameInput.value = '';
-                    descriptionInput.value = '';
-                    typeSelect.value = 'basic';
-                    
-                    nominations.push(newNomination);
-                    updateUI();
-                    populateAdminSelects();
-                    
-                    showNomination(id);
-                    
-                    setTimeout(() => {
-                        const section = document.getElementById(`nomination-${id}`);
-                        if (section) {
-                            section.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    }, 300);
-                }).catch(error => {
-                    showToast('Ошибка при создании номинации: ' + error.message, 'error');
-                });
+        }
+    
+        // Выход администратора
+        function adminLogout() {
+            isAdmin = false;
+            localStorage.removeItem('adminToken');
+            updateAdminButton();
+            
+            document.getElementById('admin-panel-modal').style.display = 'none';
+            showToast('Вы вышли из админ-панели', 'success');
+        }
+    
+        // Создание номинации
+        function createNomination() {
+            const nameInput = document.getElementById('admin-category-name');
+            const descriptionInput = document.getElementById('admin-category-description');
+            const typeSelect = document.getElementById('admin-category-type');
+            
+            const name = nameInput.value.trim();
+            const description = descriptionInput.value.trim();
+            const categoryType = typeSelect.value;
+            
+            if (!name) {
+                showToast('Введите название номинации!', 'error');
+                return;
             }
-        
-            // Удаление номинации
-            function deleteNomination() {
-                const select = document.getElementById('delete-category-select');
-                const nominationId = select.value;
-                
-                if (!nominationId) {
-                    showToast('Выберите номинацию для удаления!', 'error');
-                    return;
-                }
-                
-                const nomination = nominations.find(n => n.id === nominationId);
-                if (!nomination) {
-                    showToast('Номинация не найдена!', 'error');
-                    return;
-                }
-                
-                if (!confirm(`Удалить номинацию "${nomination.title}"?\n\nЭто действие нельзя отменить.`)) {
-                    return;
-                }
-                
-                const nominationRef = database.ref(`nominations/${nominationId}`);
-                const votesRef = database.ref(`votes/${nominationId}`);
-                
-                Promise.all([
-                    nominationRef.remove(),
-                    votesRef.remove()
-                ]).then(() => {
-                    showToast(`Номинация "${nomination.title}" удалена!`, 'success');
-                    
-                    const index = nominations.findIndex(n => n.id === nominationId);
-                    if (index > -1) {
-                        nominations.splice(index, 1);
-                    }
-                    
-                    if (userVotes[nominationId]) {
-                        delete userVotes[nominationId];
-                        localStorage.setItem('nasvayAwardsVotes', JSON.stringify(userVotes));
-                    }
-                    
-                    if (activeCategory === nominationId) {
-                        activeCategory = nominations.length > 0 ? nominations[0].id : null;
-                    }
-                    
-                    updateUI();
-                    populateAdminSelects();
-                    select.value = '';
-                    
-                }).catch(error => {
-                    showToast('Ошибка при удалении номинации: ' + error.message, 'error');
-                });
+            
+            const id = name.toLowerCase()
+                .replace(/[^a-zа-яё0-9]/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+            
+            if (nominations.find(n => n.id === id)) {
+                showToast('Номинация с таким названием уже существует!', 'error');
+                return;
             }
-        
-            // Добавление кандидата
-            function addCandidate() {
-                const categorySelect = document.getElementById('admin-category');
-                const nameInput = document.getElementById('admin-candidate-name');
-                const descriptionInput = document.getElementById('admin-candidate-description');
+            
+            const newNomination = {
+                id: id,
+                title: name,
+                description: description,
+                icon: "fas fa-award",
+                category: categoryType,
+                candidates: []
+            };
+            
+            const nominationRef = database.ref(`nominations/${id}`);
+            nominationRef.set({
+                title: name,
+                description: description,
+                icon: "fas fa-award",
+                category: categoryType,
+                candidates: []
+            }).then(() => {
+                showToast(`Номинация "${name}" создана!`, 'success');
                 
-                const categoryId = categorySelect.value;
-                const name = nameInput.value.trim();
-                const description = descriptionInput.value.trim();
+                nameInput.value = '';
+                descriptionInput.value = '';
+                typeSelect.value = 'basic';
                 
-                if (!categoryId) {
-                    showToast('Выберите номинацию!', 'error');
-                    return;
-                }
+                nominations.push(newNomination);
+                updateUI();
+                populateAdminSelects();
                 
-                if (!name) {
-                    showToast('Введите имя кандидата!', 'error');
-                    return;
-                }
-                
-                const nomination = nominations.find(n => n.id === categoryId);
-                if (!nomination) {
-                    showToast('Номинация не найдена!', 'error');
-                    return;
-                }
-                
-                const id = `candidate-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-                
-                const newCandidate = {
-                    id: id,
-                    name: name,
-                    description: description || "Новый кандидат"
-                };
-                
-                if (!nomination.candidates) {
-                    nomination.candidates = [];
-                }
-                nomination.candidates.push(newCandidate);
-                
-                const candidatesRef = database.ref(`nominations/${categoryId}/candidates`);
-                candidatesRef.set(nomination.candidates).then(() => {
-                    showToast(`Кандидат "${name}" добавлен!`, 'success');
-                    
-                    nameInput.value = '';
-                    descriptionInput.value = '';
-                    
-                    updateUI();
-                    populateAdminSelects();
-                    showNomination(categoryId);
-                }).catch(error => {
-                    showToast('Ошибка при добавлении кандидата: ' + error.message, 'error');
-                });
-            }
-        
-            // Голосование за кандидата
-            function voteForCandidate(nominationId, candidateId) {
-                if (votingEnded) {
-                    showToast('Голосование завершено!', 'error');
-                    return;
-                }
-                
-                // Сохраняем старый голос перед обновлением
-                const oldVote = userVotes[nominationId];
-                
-                // Если голос не изменился, ничего не делаем
-                if (oldVote === candidateId) {
-                    return;
-                }
-                
-                // Обновляем голос в Firebase
-                updateVoteInFirebase(nominationId, candidateId, oldVote);
-                
-                // Обновляем UI
-                updateVoteButtonsState(nominationId);
-                showToast(oldVote ? 'Голос изменён!' : 'Голос принят!', 'success');
-                
-                const card = document.querySelector(`[data-candidate-id="${candidateId}"]`);
-                if (card) {
-                    card.classList.add('selected');
-                }
-            }
-        
-            // Обновление голоса в Firebase
-            function updateVoteInFirebase(nominationId, candidateId, oldVote) {
-                // Увеличиваем голоса за нового кандидата
-                const newVoteRef = database.ref(`votes/${nominationId}/${candidateId}`);
-                newVoteRef.transaction(currentVotes => {
-                    return (currentVotes || 0) + 1;
-                });
-                
-                // Если был старый голос и он отличается от нового, уменьшаем его
-                if (oldVote && oldVote !== candidateId) {
-                    const oldVoteRef = database.ref(`votes/${nominationId}/${oldVote}`);
-                    oldVoteRef.transaction(currentVotes => {
-                        // Убеждаемся, что счётчик не уйдёт ниже 0
-                        const newCount = Math.max((currentVotes || 0) - 1, 0);
-                        return newCount;
-                    });
-                }
-                
-                // Обновляем локальное хранилище
-                userVotes[nominationId] = candidateId;
-                localStorage.setItem('nasvayAwardsVotes', JSON.stringify(userVotes));
-            }
-        
-            // Сброс всех голосов
-            function resetAllVotes() {
-                if (!confirm('Сбросить все голоса?\n\nЭто действие нельзя отменить.')) {
-                    return;
-                }
-                
-                const votesRef = database.ref('votes');
-                votesRef.remove().then(() => {
-                    showToast('Все голоса сброшены!', 'success');
-                    userVotes = {};
-                    localStorage.removeItem('nasvayAwardsVotes');
-                    
-                    nominations.forEach(nomination => {
-                        updateVoteButtonsState(nomination.id);
-                    });
-                }).catch(error => {
-                    showToast('Ошибка при сбросе голосов: ' + error.message, 'error');
-                });
-            }
-        
-            // Показ уведомления
-            function showToast(message, type = 'success') {
-                const toast = document.getElementById('toast');
-                const toastMessage = document.getElementById('toast-message');
-                
-                toast.className = 'toast';
-                if (type === 'error') {
-                    toast.classList.add('error');
-                }
-                
-                toastMessage.textContent = message;
-                toast.classList.add('active');
+                showNomination(id);
                 
                 setTimeout(() => {
-                    toast.classList.remove('active');
-                }, 3000);
+                    const section = document.getElementById(`nomination-${id}`);
+                    if (section) {
+                        section.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 300);
+            }).catch(error => {
+                showToast('Ошибка при создании номинации: ' + error.message, 'error');
+            });
+        }
+    
+        // Удаление номинации
+        function deleteNomination() {
+            const select = document.getElementById('delete-category-select');
+            const nominationId = select.value;
+            
+            if (!nominationId) {
+                showToast('Выберите номинацию для удаления!', 'error');
+                return;
             }
-        </script>
+            
+            const nomination = nominations.find(n => n.id === nominationId);
+            if (!nomination) {
+                showToast('Номинация не найдена!', 'error');
+                return;
+            }
+            
+            if (!confirm(`Удалить номинацию "${nomination.title}"?\n\nЭто действие нельзя отменить.`)) {
+                return;
+            }
+            
+            const nominationRef = database.ref(`nominations/${nominationId}`);
+            const votesRef = database.ref(`votes/${nominationId}`);
+            
+            Promise.all([
+                nominationRef.remove(),
+                votesRef.remove()
+            ]).then(() => {
+                showToast(`Номинация "${nomination.title}" удалена!`, 'success');
+                
+                const index = nominations.findIndex(n => n.id === nominationId);
+                if (index > -1) {
+                    nominations.splice(index, 1);
+                }
+                
+                if (userVotes[nominationId]) {
+                    delete userVotes[nominationId];
+                    localStorage.setItem('nasvayAwardsVotes', JSON.stringify(userVotes));
+                }
+                
+                if (activeCategory === nominationId) {
+                    activeCategory = nominations.length > 0 ? nominations[0].id : null;
+                }
+                
+                updateUI();
+                populateAdminSelects();
+                select.value = '';
+                
+            }).catch(error => {
+                showToast('Ошибка при удалении номинации: ' + error.message, 'error');
+            });
+        }
+    
+        // Добавление кандидата
+        function addCandidate() {
+            const categorySelect = document.getElementById('admin-category');
+            const nameInput = document.getElementById('admin-candidate-name');
+            const descriptionInput = document.getElementById('admin-candidate-description');
+            
+            const categoryId = categorySelect.value;
+            const name = nameInput.value.trim();
+            const description = descriptionInput.value.trim();
+            
+            if (!categoryId) {
+                showToast('Выберите номинацию!', 'error');
+                return;
+            }
+            
+            if (!name) {
+                showToast('Введите имя кандидата!', 'error');
+                return;
+            }
+            
+            const nomination = nominations.find(n => n.id === categoryId);
+            if (!nomination) {
+                showToast('Номинация не найдена!', 'error');
+                return;
+            }
+            
+            const id = `candidate-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            
+            const newCandidate = {
+                id: id,
+                name: name,
+                description: description || "Новый кандидат"
+            };
+            
+            if (!nomination.candidates) {
+                nomination.candidates = [];
+            }
+            nomination.candidates.push(newCandidate);
+            
+            const candidatesRef = database.ref(`nominations/${categoryId}/candidates`);
+            candidatesRef.set(nomination.candidates).then(() => {
+                showToast(`Кандидат "${name}" добавлен!`, 'success');
+                
+                nameInput.value = '';
+                descriptionInput.value = '';
+                
+                updateUI();
+                populateAdminSelects();
+                showNomination(categoryId);
+            }).catch(error => {
+                showToast('Ошибка при добавлении кандидата: ' + error.message, 'error');
+            });
+        }
+    
+        // Голосование за кандидата
+        function voteForCandidate(nominationId, candidateId) {
+            if (votingEnded) {
+                showToast('Голосование завершено!', 'error');
+                return;
+            }
+            
+            // Сохраняем старый голос перед обновлением
+            const oldVote = userVotes[nominationId];
+            
+            // Если голос не изменился, ничего не делаем
+            if (oldVote === candidateId) {
+                return;
+            }
+            
+            // Обновляем голос в Firebase
+            updateVoteInFirebase(nominationId, candidateId, oldVote);
+            
+            // Обновляем UI
+            updateVoteButtonsState(nominationId);
+            showToast(oldVote ? 'Голос изменён!' : 'Голос принят!', 'success');
+            
+            const card = document.querySelector(`[data-candidate-id="${candidateId}"]`);
+            if (card) {
+                card.classList.add('selected');
+            }
+            
+            // Показываем всплывающую рекламу каждые 3 голоса
+            showSponsorPopup();
+        }
+    
+        // Обновление голоса в Firebase
+        function updateVoteInFirebase(nominationId, candidateId, oldVote) {
+            // Увеличиваем голоса за нового кандидата
+            const newVoteRef = database.ref(`votes/${nominationId}/${candidateId}`);
+            newVoteRef.transaction(currentVotes => {
+                return (currentVotes || 0) + 1;
+            });
+            
+            // Если был старый голос и он отличается от нового, уменьшаем его
+            if (oldVote && oldVote !== candidateId) {
+                const oldVoteRef = database.ref(`votes/${nominationId}/${oldVote}`);
+                oldVoteRef.transaction(currentVotes => {
+                    // Убеждаемся, что счётчик не уйдёт ниже 0
+                    const newCount = Math.max((currentVotes || 0) - 1, 0);
+                    return newCount;
+                });
+            }
+            
+            // Обновляем локальное хранилище
+            userVotes[nominationId] = candidateId;
+            localStorage.setItem('nasvayAwardsVotes', JSON.stringify(userVotes));
+        }
+    
+        // Сброс всех голосов
+        function resetAllVotes() {
+            if (!confirm('Сбросить все голоса?\n\nЭто действие нельзя отменить.')) {
+                return;
+            }
+            
+            const votesRef = database.ref('votes');
+            votesRef.remove().then(() => {
+                showToast('Все голоса сброшены!', 'success');
+                userVotes = {};
+                localStorage.removeItem('nasvayAwardsVotes');
+                
+                nominations.forEach(nomination => {
+                    updateVoteButtonsState(nomination.id);
+                });
+            }).catch(error => {
+                showToast('Ошибка при сбросе голосов: ' + error.message, 'error');
+            });
+        }
+    
+        // Показать всплывающую рекламу
+        function showSponsorPopup() {
+            voteCount++;
+            
+            // Показываем каждые 3 голоса
+            if (voteCount % 3 === 0) {
+                const popup = document.getElementById('sponsor-popup');
+                popup.classList.add('active');
+                
+                // Автоматически скрываем через 5 секунд
+                setTimeout(() => {
+                    popup.classList.remove('active');
+                }, 5000);
+            }
+        }
+    
+        // Показ уведомления
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toast.className = 'toast';
+            if (type === 'error') {
+                toast.classList.add('error');
+            }
+            
+            toastMessage.textContent = message;
+            toast.classList.add('active');
+            
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
