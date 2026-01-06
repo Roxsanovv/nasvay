@@ -3759,22 +3759,21 @@
         }
 
         // Функция для расчета результатов
-        function calculateResults()
-            
+        function calculateResults() {
             const votesRef = database.ref('votes');
-            
+    
             votesRef.once('value').then(snapshot => {
                 const votesData = snapshot.val() || {};
                 votingResults = {};
-                
+        
                 // Собираем результаты по номинациям
                 Object.keys(votesData).forEach(nominationId => {
                     const nominationVotes = votesData[nominationId];
                     const nomination = nominations.find(n => n.id === nominationId);
-                    
+            
                     if (nomination && nomination.candidates) {
                         const results = [];
-                        
+                
                         // Для каждого кандидата в номинации
                         nomination.candidates.forEach(candidate => {
                             const votesCount = nominationVotes[candidate.id] || 0;
@@ -3787,10 +3786,10 @@
                                 description: candidate.description
                             });
                         });
-                        
+                
                         // Сортируем по количеству голосов
                         results.sort((a, b) => b.votes - a.votes);
-                        
+                
                         // Сохраняем результаты для номинации
                         votingResults[nominationId] = {
                             nominationTitle: nomination.title,
@@ -3800,25 +3799,25 @@
                         };
                     }
                 });
-                
+        
                 // Определяем победителей
                 determineWinners();
-                
+        
                 // Сохраняем результаты в Firebase
                 saveResultsToFirebase();
-                
+        
                 resultsCalculated = true;
-                
+        
                 showToast('Результаты успешно рассчитаны!', 'success');
-                
+        
                 // Показываем кнопку результатов
                 document.getElementById('results-tab-btn').style.display = 'flex';
-                
+        
                 // Если открыта вкладка результатов, обновляем их
                 if (document.getElementById('results-tab').classList.contains('active')) {
                     createWinnersCards();
                 }
-                
+        
             }).catch(error => {
                 console.error('Ошибка при расчете результатов:', error);
                 showToast('Ошибка при расчете результатов', 'error');
