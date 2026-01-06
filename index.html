@@ -3759,10 +3759,7 @@
         }
 
         // Функция для расчета результатов
-        function calculateResults() {
-            if (resultsCalculated && !confirm('Пересчитать результаты голосования?\n\nСтарые результаты будут удалены.')) {
-                return;
-            }
+        function calculateResults()
             
             const votesRef = database.ref('votes');
             
